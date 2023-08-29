@@ -10,6 +10,10 @@ app = FastAPI()
 
 model = joblib.load("rice.pkl")
 
+@app.get("/")
+def index():
+    return {"message":"hello world from aakash"}
+
 @app.post("/predict_image")
 async def predict_image(file: UploadFile):
     img_pil = PIL.Image.open(file.file)
